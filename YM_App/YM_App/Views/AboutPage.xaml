@@ -41,8 +41,8 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,10,0,0" Text="Add Habit"
-                        Command="{Binding OpenWebCommand}"
+                <Button Margin="0,10,0,0" Text="Add Reward"
+                        Clicked="AddReward"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
             </StackLayout>

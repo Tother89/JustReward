@@ -11,5 +11,10 @@ namespace YM_App.Views
         {
             InitializeComponent();
         }
+
+        public void AddReward(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RewardPage());
+        }
     }
 }
