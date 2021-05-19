@@ -6,17 +6,33 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <FlexLayout Direction="Column" Grow="1" VerticalOptions="FillAndExpand" >
-                <FlexLayout Direction="Row" FlexLayout.Basis="10%" BackgroundColor="Green" JustifyContent="SpaceEvenly">
-                    <Button Text="+" TextColor="White" Background="Blue" Padding="20"></Button>
+                <FlexLayout Direction="Row" FlexLayout.Basis="10%"  JustifyContent="SpaceEvenly">
+                    <Button Text="+" TextColor="White" Background="Blue" Padding="20" Clicked="Button_OnClicked"></Button>
                     <Button Text="-" TextColor="White" Background="Blue" Padding="20"></Button>
                 </FlexLayout>
                 <Label Text="Reward" FontSize="Medium" TextColor="DarkSlateGray" FlexLayout.Basis="5%"></Label>
-                <FlexLayout Direction="Row" FlexLayout.Basis="10%" BackgroundColor="Yellow">
+                <FlexLayout Direction="Row" FlexLayout.Basis="10%" >
                     <Entry x:Name="RewardInput" Background="Black" TextColor="White" FlexLayout.Grow="1"></Entry>
                 </FlexLayout>
 
-                <ListView x:Name="RewardList" ItemsSource="{Binding Rewards}" FlexLayout.Basis="60%" BackgroundColor="Orange">
-
+                <ListView x:Name="RewardList" ItemsSource="{Binding Rewards}" FlexLayout.Basis="60%" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <FlexLayout Direction="Row" AlignItems="Center">
+                                    <CheckBox IsChecked="{Binding IsCompleted}" CheckedChanged="CheckBox_OnCheckedChanged"/>
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding Status}" Margin="15,0,0,0"/> 
+                                    <FlexLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" NumberOfTapsRequired="2"/>
+                                    </FlexLayout.GestureRecognizers>
+                                </FlexLayout>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Clicked="DeleteActionOnClicked" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                                </ViewCell.ContextActions>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
 
             </FlexLayout>

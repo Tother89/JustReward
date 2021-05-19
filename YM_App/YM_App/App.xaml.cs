@@ -28,5 +28,11 @@ namespace YM_App
         protected override void OnResume()
         {
         }
+
+        public const string ACTION_NOT_ALLOWED = "Action not allowed\n";
+        public const string REMOVE_ITEM = "Are you sure you want to remove this item?\n";
+        public const string DELETE = "Delete";
+        public const string YES = "Yes";
+        public const string NO = "No";
     }
 }
